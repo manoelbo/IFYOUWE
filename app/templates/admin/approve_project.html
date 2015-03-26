@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+
+{% block page_content %}
+    {% for project in projects %}
+    {% if project.approved == False and current_user.is_administrator() %}
+        <div class="project-card">
+            <p class="project-text">IF {{ project.who }} {{ project.what }} WE WILL DONATE {{ project.pledged_amount}}$ TO {{ project.couse }}</p>
+             <div class="project-author"><a href="{{ url_for('.user', username=project.author.username) }}">{{ project.author.username }}</a></div>
+        </div>
+        <div>
+        	<div class="col-md-4">
+   			 {{ wtf.quick_form(form) }}
+			</div>
+        </div>
+
+
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
