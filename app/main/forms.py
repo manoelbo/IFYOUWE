@@ -47,3 +47,22 @@ class EditProfileAdminForm(Form):
         if field.data != self.user.username and \
                 User.query.filter_by(username=field.data).first():
             raise ValidationError('Username already in use.')
+
+class NewProjectForm(Form):
+    who = StringField('Who we will bribe?', validators=[Length(0, 64)])
+    what = StringField('What is the task?', validators=[Length(0, 80)])
+    couse = StringField('What the couse the money goes to?', validators=[Length(0, 64)])
+    organization_name = StringField('What organization we will support?', validators=[Length(0, 64)])
+    organization_url = StringField('Organization website:', validators=[Length(0, 64)])
+    about = TextAreaField('About:')
+    submit = SubmitField('Submit')
+
+class EditProjectAdminForm(Form):
+    who = StringField('Who we will bribe?', validators=[Length(0, 64)])
+    what = StringField('What is the task?', validators=[Length(0, 80)])
+    couse = StringField('What the couse the money goes to?', validators=[Length(0, 64)])
+    organization_name = StringField('What organization we will support?', validators=[Length(0, 64)])
+    organization_url = StringField('Organization website:', validators=[Length(0, 64)])
+    about = TextAreaField('About:')
+    approved = BooleanField('Approved?')
+    submit = SubmitField('Submit')

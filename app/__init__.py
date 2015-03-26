@@ -20,6 +20,17 @@ def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
+    app.config['OAUTH_CREDENTIALS'] = {
+    'facebook': {
+        'id': '470154729788964',
+        'secret': '010cc08bd4f51e34f3f3e684fbdea8a7'
+    },
+    'twitter': {
+        'id': '3RzWQclolxWZIMq5LJqzRZPTl',
+        'secret': 'm9TEd58DSEtRrZHpz2EjrV9AhsBRxKMo8m3kuIZj3zLwzwIimt'
+    }
+    }
+
 
     bootstrap.init_app(app)
     mail.init_app(app)

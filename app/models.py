@@ -1,9 +1,9 @@
-from datetime import datetime
+from datetime import timedelta, datetime
 import hashlib
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app, request
-from flask.ext.login import UserMixin, AnonymousUserMixin
+from flask.ext.login import UserMixin, AnonymousUserMixin, LoginManager
 from . import db, login_manager
 
 
@@ -51,6 +51,7 @@ class Role(db.Model):
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
+    social_id = db.Column(db.String(64), nullable=False, unique=True)
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
@@ -62,6 +63,7 @@ class User(UserMixin, db.Model):
     member_since = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar_hash = db.Column(db.String(32))
+    projects = db.relationship('Project', backref='author', lazy='dynamic')
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
@@ -164,6 +166,10 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
+
 
 class AnonymousUser(AnonymousUserMixin):
     def can(self, permissions):
@@ -178,3 +184,29 @@ login_manager.anonymous_user = AnonymousUser
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+class Project(db.Model):
+    __tablename__ = 'projects'
+    id = db.Column(db.Integer, primary_key=True)
+    who = db.Column(db.String(64))
+    what = db.Column(db.String(128))
+    couse = db.Column(db.String(64))
+    organization_name = db.Column(db.String(64))
+    organization_url = db.Column(db.String(64))
+    about = db.Column(db.Text)
+    pledged_amount = db.Column(db.BigInteger, default=0)
+    timestamp = db.Column(db.Date, index=True, default=datetime.utcnow)
+    end_first_round = db.Column(db.Date, index=True, default=datetime.utcnow() + timedelta(45))
+    end_second_round = db.Column(db.Date, index=True, default=datetime.utcnow() + timedelta(90))
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    approved = db.Column(db.Boolean, default=False)
+
+    def days_to_go(self):
+        days_to_go = self.end_first_round - datetime.utcnow()
+        return days_to_go
+
+
+
+
+
+
