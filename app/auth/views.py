@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, url_for, flash
+from flask import render_template, redirect, session, request, url_for, flash
 from flask.ext.login import login_user, logout_user, login_required, \
     current_user
 from . import auth
@@ -6,8 +6,10 @@ from .. import db
 from ..models import User
 from ..email import send_email
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
-    PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
+    PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm,\
+    RegistrationFormFacebook
 from .oauth import OAuthSignIn, FacebookSignIn
+from config import config
 
 
 @auth.route('/authorize/<provider>')
@@ -28,11 +30,12 @@ def oauth_callback(provider):
         return redirect(url_for('index'))
     user = User.query.filter_by(social_id=social_id).first()
     if not user:
-        user = User(social_id=social_id, nickname=username, email=email)
-        db.session.add(user)
-        db.session.commit()
+        session['social_id'] = social_id
+        session['name'] = username
+        session['email'] = email
+        return redirect(url_for('auth.facebook_register'))
     login_user(user, True)
-    return redirect(url_for('index'))
+    return redirect(url_for('main.index'))
 
 
 @auth.before_app_request
@@ -86,6 +89,24 @@ def register():
                    'auth/email/confirm', user=user, token=token)
         flash('A confirmation email has been sent to you by email.')
         return redirect(url_for('auth.login'))
+    return render_template('auth/register.html', form=form)
+
+@auth.route('/facebook_register', methods=['GET', 'POST'])
+def facebook_register():
+    form = RegistrationFormFacebook()
+    name = session.get('name')
+    social_id = session.get('social_id')
+    email = session.get('email')
+    if form.validate_on_submit():
+        user = User(email=email,
+                    username=form.username.data,
+                    social_id=social_id,
+                    name=name,
+                    confirmed=True)
+        db.session.add(user)
+        db.session.commit()
+        login_user(user, True)
+        return redirect(url_for('main.index'))
     return render_template('auth/register.html', form=form)
 
 

@@ -1,5 +1,6 @@
 from rauth import OAuth1Service, OAuth2Service
 from flask import current_app, url_for, request, redirect, session
+from config import config
 
 
 class OAuthSignIn(object):
@@ -18,7 +19,7 @@ class OAuthSignIn(object):
         pass
 
     def get_callback_url(self):
-        return url_for('oauth_callback', provider=self.provider_name,
+        return url_for('auth.oauth_callback', provider=self.provider_name,
                        _external=True)
 
     @classmethod
@@ -36,8 +37,8 @@ class FacebookSignIn(OAuthSignIn):
         super(FacebookSignIn, self).__init__('facebook')
         self.service = OAuth2Service(
             name='facebook',
-            client_id=self.consumer_id,
-            client_secret=self.consumer_secret,
+            client_id='426722590817838',
+            client_secret='08804807d6e3695612707ae724b12a5a',
             authorize_url='https://graph.facebook.com/oauth/authorize',
             access_token_url='https://graph.facebook.com/oauth/access_token',
             base_url='https://graph.facebook.com/'
