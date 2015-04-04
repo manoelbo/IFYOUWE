@@ -1,4 +1,4 @@
-import os
+import os, stripe
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -13,16 +13,11 @@ class Config:
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASKY_MAIL_SENDER = 'Flasky Admin <flasky@example.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
-    OAUTH_CREDENTIALS = {
-    'facebook': {
-        'id': '426722590817838',
-        'secret': '08804807d6e3695612707ae724b12a5a'
-        },
-    'twitter': {
-        'id': 'St1XCP5xmMzfyyDgaOQ5YftqB',
-        'secret': 'kQyfMSSnQcxGXb50jXrqvgke6UoNNucm0DGKcZgGwv8e3230xn'
-        }
+    stripe_keys = {
+    'secret_key': os.environ['SECRET_KEY'],
+    'publishable_key': os.environ['PUBLISHABLE_KEY']
     }
+    stripe.api_key = stripe_keys['secret_key']
 
     @staticmethod
     def init_app(app):

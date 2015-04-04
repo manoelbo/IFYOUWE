@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, abort, flash
+from flask import render_template, redirect, url_for, abort, flash, request
 from datetime import timedelta, datetime, date
 from flask.ext.login import login_required, current_user
 from . import main
@@ -6,6 +6,15 @@ from .forms import EditProfileForm, EditProfileAdminForm, NewProjectForm, EditPr
 from .. import db
 from ..models import Permission, Role, User, Project
 from ..decorators import admin_required
+import stripe, os
+
+stripe_keys = {
+    'secret_key': os.environ['SECRET_KEY'],
+    'publishable_key': os.environ['PUBLISHABLE_KEY']
+    }
+
+stripe.api_key = stripe_keys['secret_key']
+
 
 
 @main.route('/')
@@ -13,6 +22,31 @@ def index():
     projects = Project.query.filter_by(approved=True).order_by(Project.timestamp.desc()).all()
     today = datetime.now()
     return render_template('index.html', projects=projects, today=today)
+
+@main.route('/stripe')
+def stripe_index():
+    return render_template('stripe_index.html', key=stripe_keys['publishable_key'])
+
+@main.route('/charge', methods=['POST'])
+def charge():
+    # Amount in cents
+    amount = 500
+
+    customer = stripe.Customer.create(
+        email='customer@example.com',
+        card=request.form['stripeToken']
+    )
+
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=amount,
+        currency='usd',
+        description='Flask Charge'
+    )
+
+    return render_template('stripe_charge.html', amount=amount)
+
+
 
 @main.route('/create', methods=['GET', 'POST'])
 def create():
