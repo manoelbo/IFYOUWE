@@ -3,8 +3,145 @@
 {% block title %}Flasky - {{ user.username }}{% endblock %}
 
 {% block page_content %}
+
+<div class="container">
+    <div class="row" id="profile-info">
+        
+        <div class="col-md-2">
+            {% if user.social_id%}
+            <div class="large-profile-picture">
+                <img class="img-rounded profile-thumbnail" src="//graph.facebook.com/{{user.facebook_id}}/picture?type=large">
+            </div>
+            {% endif %}
+            {% if user.social_id is none%}
+            <div class="large-profile-picture">
+                <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=256) }}">
+            </div>
+            {% endif %}
+            
+        </div>
+
+        <div class="col-md-10" id="about-info">
+            <h1 class="big-text">Mané Brasil <span class="sub-text grew-text">| Programador ecêntrico</span>
+            <p class="normal-text"> Todo mundo sabe qual é o meu negócio, é só perguntar pra quem me conhece. 
+            Tomo toddynho e escuto lambada profissionalmente, nas horas vagas programo web.</p>
+            <p class="normal-text grew-text">#1 - Member since May 2015  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;São Paulo, Brazil</p> 
+        </div>
+
+    </div>
+
+    <div class="row" id="charities-helped">
+        <div class="col-md-12">
+            <h2 class="medium-text">Charities helped<h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-1">
+            <div class="small-profile-picture pull-left">
+                <img class="img-rounded profile-thumbnail" src="//graph.facebook.com/{{user.facebook_id}}/picture?type=large">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h3 class="who-text pull-left"> Barnacancerfonden</h3>
+        </div>
+
+        <div class="col-md-1">
+            <div class="small-profile-picture pull-left">
+                <img class="img-rounded profile-thumbnail" src="//graph.facebook.com/{{user.facebook_id}}/picture?type=large">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h3 class="who-text pull-left"> Barnacancerfonden</h3>
+        </div>
+
+        <div class="col-md-1">
+            <div class="small-profile-picture pull-left">
+                <img class="img-rounded profile-thumbnail" src="//graph.facebook.com/{{user.facebook_id}}/picture?type=large">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h3 class="who-text pull-left"> Barnacancerfonden</h3>
+        </div>
+
+        <div class="col-md-1">
+            <div class="small-profile-picture pull-left">
+                <img class="img-rounded profile-thumbnail" src="//graph.facebook.com/{{user.facebook_id}}/picture?type=large">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h3 class="who-text pull-left"> Barnacancerfonden</h3>
+        </div>
+
+        <div class="col-md-1">
+            <div class="small-profile-picture pull-left">
+                <img class="img-rounded profile-thumbnail" src="//graph.facebook.com/{{user.facebook_id}}/picture?type=large">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h3 class="who-text pull-left"> Barnacancerfonden</h3>
+        </div>
+
+        <div class="col-md-1">
+            <div class="small-profile-picture pull-left">
+                <img class="img-rounded profile-thumbnail" src="//graph.facebook.com/{{user.facebook_id}}/picture?type=large">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h3 class="who-text pull-left"> Barnacancerfonden</h3>
+        </div>
+
+    </div> 
+
+    <div class="row" id="cards-collected">
+        <div class="col-md-12">
+            <h2 class="medium-text">Cards collected<h2>
+        </div>
+    </div>
+
+    <div class="row row-cards">
+        <div class="col-md-4">
+            <div class="project-card">
+            <p class="project-card-text">If the Swedish Prime Minister wear a wig for a day we will donate $6.520 to the Cancer Foundation.</p>
+            <button type="button" class="btn madeit_btn">I made it!</button>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="project-card">
+            <p class="project-card-text">If the Swedish Prime Minister wear a wig for a day we will donate $6.520 to the Cancer Foundation.</p>
+            <button type="button" class="btn madeit_btn">I made it!</button>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="project-card">
+            <p class="project-card-text">If the Swedish Prime Minister wear a wig for a day we will donate $6.520 to the Cancer Foundation.</p>
+            <button type="button" class="btn madeit_btn">I made it!</button>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+
+
+
+
+    </div>
+
+
+{#
 <div class="page-header">
+    {% if user.social_id%}
+    <img class="img-rounded profile-thumbnail" src="//graph.facebook.com/{{user.facebook_id}}/picture?type=large">
+    {% endif %}
+    {% if user.social_id is none%}
     <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=256) }}">
+    {% endif %}
+
     <div class="profile-header">
         <h1>{{ user.username }}</h1>
         {% if user.name or user.location %}
@@ -30,4 +167,5 @@
         </p>
     </div>
 </div>
+#}
 {% endblock %}

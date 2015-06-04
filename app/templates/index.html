@@ -2,12 +2,53 @@
 
 {% block title %}Flasky{% endblock %}
 
-{% block page_content %}
-{% for project in projects %}
-        <div class="project-card">
-            <p class="project-text"> <a href="{{ url_for('.project', id=project.id) }}">IF {{ project.who }} {{ project.what }} WE WILL DONATE {{ project.pledged_amount}}$ TO {{ project.couse }}</a></p>
-             <div class="project-author"><a href="{{ url_for('.user', username=project.author.username) }}">{{ project.author.username }}</a></div>
-             {{ moment(project.end_first_round).fromTime(today) }}
-        </div>
+
+	{% block page_content %}
+
+	<div class="wrapper">
+		<div class="container">
+
+	
+	{% for message in get_flashed_messages() %}
+   			 <div class="alert alert-warning">
+        	<button type="button" class="close" data-dismiss="alert">&times;</button>
+        	{{ message }}
+         	</div>
     {% endfor %}
+
+	    	<h2 class="super-text welcome">CREATE A CHALLANGE AND MAKE POEPLE HAPPY.</h2> 
+	    	<p class="super-brake">_ _ _ _ _ _ _ _ _ _ _ </p>
+	    	<button type="button" class="btn btn_round black"> HOW IT WORKS </button>
+	    	<button type="button" class="btn btn_round blue"> CREATE A CHALLENGE </button>	
+		    	
+	    	<div class="box1">
+		    	<div class="label-circle">
+		    			<p class="label-text">1</p>
+		    	</div> 
+		    	<p class="sub-title"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore. </p>
+		    </div>
+     
+	{% for project in projects %}
+	      	 <div class="project-card {% if loop.index is divisibleby 3 %} third-card {% endif %}">
+	            <p class="project-card-text"> <a href="{{ url_for('.challenge', id=project.id) }}">IF {{ project.who }} {{ project.what }} WE WILL DONATE {{ project.pledged_amount}}$ TO {{ project.couse }}</a></p>
+	             {{ moment(project.end_first_round).fromTime(today) }}
+	            <button type="button" class="btn btn_support"> SUPPORT </button>
+	        </div>	
+    {% endfor %}
+    		
+    		<p class="super-brake margin-brake">_ _ _ _ _ _ _ _ _ _ _ </p>
+		    	<div class="label-circle">
+		    			<p class="label-text">2</p>
+		    	</div> 
+		    	<p class="sub-title"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore. </p>
+     
+	{% for project in projects %}
+	      	 <div class="project-card {% if loop.index is divisibleby 3 %} third-card {% endif %}">
+	            <p class="project-card-text"> <a href="{{ url_for('.challenge', id=project.id) }}">IF {{ project.who }} {{ project.what }} WE WILL DONATE {{ project.pledged_amount}}$ TO {{ project.couse }}</a></p>
+	             {{ moment(project.end_first_round).fromTime(today) }}
+	            <button type="button" class="btn btn_support"> SUPPORT </button>
+	        </div>	
+    {% endfor %}
+    </div>
+</div>
 {% endblock %}

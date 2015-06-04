@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+
+{% block page_content %}
+
+	<div class="row">
+		<div class="col-md-12 feed-hall-title">
+			<h1 class="big-text text-center center-block sublime-yellow">Hall of Glory</h1>
+			<h2 class="feed-medium-text text-center">The glorious list of accomplished deeds.</br>
+			Good job donors, and well played challenged ones.
+		</div>
+	</div>
+	
+	{% for project in projects %}
+
+
+		<div class="feed-card-background {{project.background_color}}">
+			<div class="emoji-background">
+	            
+	            <div class="emoji-line">{{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     
+	            </div>
+           
+	            <div class="emoji-line push-left">{{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}    {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}    {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}            
+	            </div>
+            
+	            <div class="emoji-line">{{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     
+	            </div>
+           
+	            <div class="emoji-line push-left">{{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}    {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}    {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}            
+	            </div>
+
+	            <div class="emoji-line">{{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     
+	            </div>
+
+            
+        </div>
+
+        <div class="container">
+        <div class="project-card feed-card pull-left">
+         
+            <a href="{{ url_for('.challenge', id=project.id) }}"><p class="project-card-text">If {{ project.who }} {{ project.what }} we will donate {{ project.pledged_amount}}$ to {{ project.couse }}</p>
+            <button type="button" class="btn support_btn"> See Proof </button></a>
+        
+        </div>
+        
+        <div class="feed-poject-info feed-info-text {{project.background_color}} pull-left">
+          
+            <p>23 days left</p>
+            <p>245 donors</p>
+            <p>301 views </p>
+
+    	</div>
+    	</div class="container">
+
+		</div> 
+	{% endfor %}
+
+{% endblock %}

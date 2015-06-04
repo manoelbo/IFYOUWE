@@ -6,24 +6,23 @@ from ..models import User
 
 
 class LoginForm(Form):
-    email = StringField('Email', validators=[Required(), Length(1, 64),
+    email = StringField('', validators=[Required(), Length(1, 64),
                                              Email()])
-    password = PasswordField('Password', validators=[Required()])
-    remember_me = BooleanField('Keep me logged in')
-    submit = SubmitField('Log In')
+    password = PasswordField('', validators=[Required()])
+    submit = SubmitField('Log me In')
 
 
 class RegistrationForm(Form):
-    email = StringField('Email', validators=[Required(), Length(1, 64),
-                                           Email()])
-    username = StringField('Username', validators=[
+    username = StringField('', validators=[
         Required(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
                                           'Usernames must have only letters, '
                                           'numbers, dots or underscores')])
-    password = PasswordField('Password', validators=[
+    email = StringField('', validators=[Required(), Length(1, 64),
+                                           Email()])
+    password = PasswordField('', validators=[
         Required(), EqualTo('password2', message='Passwords must match.')])
-    password2 = PasswordField('Confirm password', validators=[Required()])
-    submit = SubmitField('Register')
+    password2 = PasswordField('', validators=[Required()])
+    submit = SubmitField('Sign me up')
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
@@ -34,11 +33,11 @@ class RegistrationForm(Form):
             raise ValidationError('Username already in use.')
 
 class RegistrationFormFacebook(Form):
-    username = StringField('Username', validators=[
+    username = StringField('', validators=[
         Required(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
                                           'Usernames must have only letters, '
                                           'numbers, dots or underscores')])
-    submit = SubmitField('Register')
+    submit = SubmitField('Sign me up')
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():

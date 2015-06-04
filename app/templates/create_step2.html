@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky - Register{% endblock %}
+
+{% block page_content %}
+
+
+	
+{% for message in get_flashed_messages() %}
+<div class="container">
+   	<div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+         </div>
+    </div>
+{% endfor %}
+
+
+<div class="card-background naked-orange" id="background">
+    <div class="container">
+        <div class="row">
+            <div class='col-md-12'>
+                <div class="project-card card-position center-block">
+                    <p class="project-card-text">If {{who}} {{what}} we will donate $??? to {{couse}}</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div> 
+
+<div class="container">
+	
+	<div class="row" >
+		<div class="col-md-12" id="create-title">
+		<p class="big-text text-center">Just 3 more questions.</p>
+		</div> 
+	</div>
+
+	<div class="row">
+		
+		<div class="col-md-7" id="form-control-2">
+			{{ wtf.quick_form(form_step_2) }}
+		</div>
+
+		<div class="col-md-1">
+			<div id="vertigal-braker-2"> </div>
+		</div>
+
+		<div class="col-md-4" id="extra-info">
+			<h2 class="medium-bold" id="organization_website_title">Organization’s website</h2>
+			<p class="subtitle-text">Find the website of the organization you chose so people can check where their donation is going to.</p>
+			<input type="text" class="input-extra" id="organization_website_url" placeholder="www.savepandas.org"></input>
+
+
+			<h2 class="medium-bold">Twitter of the challenged person</h2>
+			<p class="subtitle-text">Let’s give people a way to reach that person and put some pressure.</p>
+			<input type="text" class="input-extra" id="twitter" placeholder="@yourmom"></input>
+			
+		</div>
+	</div>
+</div>
+
+		
+
+		
+
+
+</div>
+
+<script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
+<script>
+
+
+$(document).ready(function (){
+	$("<p class='subtitle-text'>Why do you want this challenge to happen? Motivate people to believe in what you created, or explain why the challenge is a big deal. (max:<span id='charNum'>600</span> characters)</p>").insertBefore("#why");
+
+	$("<p class='alert-text' id='submit-text'>When you submit this challenge you are agreeing with the Terms & Conditions and the challenge will follow our rules.</p>").insertAfter("#why");
+
+	$('#why').attr('placeholder', 'Why is this challenge important to you...');
+
+	$('.error').attr('id', 'move-error');
+
+	var error_message = $('.error').text();
+	if(error_message == "organization website is missing"){
+		$('#organization_website_title').css("color", "#a94442")
+		$('#organization_website_url').css("border", "2px solid #a94442")
+	};
+
+
+});
+
+$('#why').on('keyup', function(){
+	var value = $(this).val();
+	var max = 600;
+	var len = value.length
+        if (len >= max) {
+          $('#charNum').text('0');
+        } else {
+          $('#charNum').text(max - len);
+        }
+});
+
+
+
+
+new_twitter_value = $('#twitter').val();
+$('#challenged_twitter').val(new_twitter_value);
+
+new_url_value = $('#organization_website_url').val();
+$('#organization_website').val(new_url_value);
+
+$('#organization_website_url').on('keyup', function(){
+	new_url_value = $('#organization_website_url').val();
+	$('#organization_website').val(new_url_value);
+});
+
+
+
+
+</script>
+
+
+{% endblock %}

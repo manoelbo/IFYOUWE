@@ -4,13 +4,35 @@
 {% block title %}Flasky - Login{% endblock %}
 
 {% block page_content %}
-<div class="page-header">
-    <h1>Login</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 general-form login">
+			<h1 class="big-text text-center center-block sublime-blue">Log in</h1>
+			<span id="forgot"><a href="{{ url_for('auth.password_reset_request') }}">Forgot?</a></span>
+		
+	    	{{ wtf.quick_form(form) }}
+
+	    	<div class="center-block h-braker">
+	    		<hr><span class="or-brake">or</span><hr>
+	    	</div>
+
+	    	<a href="{{ url_for('auth.oauth_authorize', provider='facebook') }}"><button class="btn facebook-login-button" >Log in with Facebook</button></a>
+
+	    	<p class="field-text text-center">New here? <a href="{{url_register}}">Sign Up.</a> </p>
+
+	    </div>
+	</div>
 </div>
-<div class="col-md-4">
-    {{ wtf.quick_form(form) }}
-    <br>
-    <p>Forgot your password? <a href="{{ url_for('auth.password_reset_request') }}">Click here to reset it</a>.</p>
-    <p>New user? <a href="{{ url_for('auth.register') }}">Click here to register</a>.</p>
-</div>
+
+<script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
+
+<script>
+$(document).ready(function (){
+
+	$('input#email').attr('placeholder', 'Email');
+	$('input#password').attr('placeholder', 'Password');
+
+});
+
+</script>
 {% endblock %}

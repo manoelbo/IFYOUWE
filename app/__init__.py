@@ -5,6 +5,7 @@ from flask.ext.moment import Moment
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
 from config import config
+import os, stripe
 
 bootstrap = Bootstrap()
 mail = Mail()
@@ -30,6 +31,13 @@ def create_app(config_name):
         'secret': 'm9TEd58DSEtRrZHpz2EjrV9AhsBRxKMo8m3kuIZj3zLwzwIimt'
     }
     }
+
+    stripe_keys = {
+    'secret_key': os.environ['SECRET_KEY'],
+    'publishable_key': os.environ['PUBLISHABLE_KEY']
+    }
+
+    stripe.api_key = stripe_keys['secret_key']
 
 
     bootstrap.init_app(app)

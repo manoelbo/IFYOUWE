@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky - Register{% endblock %}
+
+{% block page_content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 general-form sign-up facebook-sign-up">
+			<h1 class="big-text text-center center-block">Just one more step!</h1>
+		
+	    	{{ wtf.quick_form(form) }}
+
+	    	<p class="field-text text-center">By signing up you agree to the </br> <a href="">Terms & Conditions.</a> </p>
+	    
+	    </div>
+	</div>
+</div>
+
+<script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
+
+<script>
+$(document).ready(function (){
+
+	$('input#username').attr('placeholder', 'User name');
+
+});
+
+</script>
+
+
+{% endblock %}

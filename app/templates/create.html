@@ -4,10 +4,610 @@
 {% block title %}Flasky - Register{% endblock %}
 
 {% block page_content %}
-<div class="page-header">
-    <h1>Create</h1>
+
+
+	
+{% for message in get_flashed_messages() %}
+<div class="container">
+   	<div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+         </div>
+    </div>
+{% endfor %}
+
+
+<div class="card-background naked-orange" id="background">
+        <div class="emoji-background">
+            <div class="emoji-line">
+            	<span class="emoji1-preview">🆕</span>    
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>    
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>    
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>    
+            	<span class="emoji2-preview">🆕</span>    
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>    
+            </div>
+           
+            <div class="emoji-line push-left">
+            	<span class="emoji4-preview">🆕</span>     
+            	<span class="emoji5-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>     
+            	<span class="emoji5-preview">🆕</span>    
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>    
+            	<span class="emoji5-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>    
+            	<span class="emoji5-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>     
+            	<span class="emoji5-preview">🆕</span>    
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>     
+            	<span class="emoji5-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>     
+            	<span class="emoji5-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>            
+            </div>
+            
+           <div class="emoji-line">
+            	<span class="emoji1-preview">🆕</span>    
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>    
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>    
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>    
+            	<span class="emoji2-preview">🆕</span>    
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji2-preview">🆕</span>     
+            	<span class="emoji3-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>    
+            </div>
+           
+            <div class="emoji-line push-left">
+            	<span class="emoji4-preview">🆕</span>     
+            	<span class="emoji5-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>     
+            	<span class="emoji5-preview">🆕</span>    
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>    
+            	<span class="emoji5-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>    
+            	<span class="emoji5-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>     
+            	<span class="emoji5-preview">🆕</span>    
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>     
+            	<span class="emoji5-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>     
+            	<span class="emoji4-preview">🆕</span>     
+            	<span class="emoji5-preview">🆕</span>     
+            	<span class="emoji1-preview">🆕</span>            
+            </div>
+            
+        </div>
+
+        <div class="project-card center-block card-position">
+            <p class="project-card-text">If <span id="card-who" class="project-card-text">{person}</span> <span id="card-what" class="project-card-text">{challange} </span> we will donate $??? to 
+			<span id="card-couse" class="project-card-text">{organization}</span></p>
+        </div>
 </div>
-<div class="col-md-4">
-    {{ wtf.quick_form(form) }}
+
+<div class="container">
+	
+	<div class="row">
+		<div class="col-md-12" id="create-title">
+		<p class="big-text text-center">What challenge will you create?</p>
+		</div> 
+	</div>
+
+	<div class="row">
+		<div class="col-md-7" id="form-control">
+			{{ wtf.quick_form(form) }}
+		</div>
+
+		<div class="col-md-1">
+			<div id="vertigal-braker"> </div>
+		</div>
+
+		<div class="col-md-4" id="background-options">
+			<h2 class="medium-bold">Background</h2>
+			<p class="subtitle-text">Customize your challenge page to attract attention and look cool.</p>
+			
+			<div class="btn-group ">
+  			
+	  			<button type="button" class="dropdown-toggle color-option" id="dropdown-selected" data-toggle="dropdown" aria-expanded="false">
+	    		<span class="naked-orange color-box pull-left"></span> <span class="text-select-option"> Naked Orange </span>
+	  			</button>
+
+  				<ul class="dropdown-menu dropdown-options" role="menu">
+				    <li>
+				    	<button type="button" id="naked-orange" class="color-option option">
+	    					<span class="naked-orange color-box pull-left"></span> 
+	    					<span class="text-select-option"> Naked Orange </span>
+  						</button>
+				   	</li>
+				   	<li>
+				    	<button type="button" id="doctor-green" class="color-option option">
+	    					<span class="doctor-green color-box pull-left"></span> 
+	    					<span class="text-select-option"> Doctor Green </span>
+  						</button>
+				   	</li>
+				   	<li>
+				    	<button type="button" id="smiley-yellow" class="color-option option">
+	    					<span class="smiley-yellow color-box pull-left"></span> 
+	    					<span class="text-select-option"> Smiley Yellow </span>
+  						</button>
+				   	</li>
+				   	<li>
+				    	<button type="button" id="blue-candy" class="color-option option">
+	    					<span class="blue-candy color-box pull-left"></span> 
+	    					<span class="text-select-option"> Blue Candy </span>
+  						</button>
+				   	</li>
+		  		</ul>
+			</div>
+
+
+			{# <select>
+				<option>Naked Orange</option>
+				<option>Naked Pini</option>
+				<option>Naked Mané</option>
+				<option>Sick Green</option>
+			</select> #}
+
+
+			<h2 class="medium-bold" id="emojis-title">Emojis</h2>
+			<p class="subtitle-text">Who doesn’t love emojis? Feed the imagination of who visits your challenge.</p>
+			<div id="emojis-painel">
+				<div id="selected-emojis">
+					<p class="field-text pull-right"><span id="emojis-counter">0</span>/5</p>
+				</div>
+				<div id="emojis-options-1">
+					<button class="emojis" value="😀">😀</button>
+					<button class="emojis" value="😁">😁</button>
+					<button class="emojis" value="😂">😂 </button>
+					<button class="emojis" value="😃">😃</button>
+					<button class="emojis" value="😄">😄</button>
+					<button class="emojis" value="😅">😅</button>
+					<button class="emojis" value="😆">😆</button>
+					<button class="emojis" value="😇">😇</button>
+					<button class="emojis" value="😈">😈</button>
+					<button class="emojis" value="👿">👿</button>
+					<button class="emojis" value="😉">😉</button>
+					<button class="emojis" value="😊">😊</button>
+					<button class="emojis" value="😋">😋</button>
+					<button class="emojis" value="😌">😌</button>
+					<button class="emojis" value="😍">😍</button>
+					<button class="emojis" value="😎">😎</button>
+					<button class="emojis" value="😏">😏</button>
+					<button class="emojis" value="😐">😐</button>
+					<button class="emojis" value="😑">😑</button>
+					<button class="emojis" value="😒">😒</button>
+					<button class="emojis" value="😓">😓</button>
+					<button class="emojis" value="😔">😔</button>
+					<button class="emojis" value="😕">😕</button>
+					<button class="emojis" value="😖">😖</button>
+					<button class="emojis" value="😀">😀</button>
+					<button class="emojis" value="😁">😁</button>
+					<button class="emojis" value="😂">😂</button>
+					<button class="emojis" value="😃">😃</button>
+					<button class="emojis" value="😄">😄</button>
+					<button class="emojis" value="😅">😅</button>
+					<button class="emojis" value="😆">😆</button>
+					<button class="emojis" value="😇">😇</button>
+					<button class="emojis" value="😈">😈</button>
+					<button class="emojis" value="😀">😀</button>
+					<button class="emojis" value="😀">😀</button>
+					<button class="emojis" value="😃">😃</button>
+					<button class="emojis" value="😄">😄</button>
+					<button class="emojis" value="😅">😅</button>
+					<button class="emojis" value="😆">😆</button>
+					<button class="emojis" value="😇">😇</button>
+				</div>
+				
+				<div id="emojis-options-2">
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+				</div>
+				
+				<div id="emojis-options-3">
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+				</div>
+
+				<div id="emojis-options-4">
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+				</div>
+
+				<div id="emojis-options-5">
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36"class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+					<img height="36" width="36" class="emojis" src="../static/img/svg/1f0cf.svg" >
+				</div>
+
+					
+				<div id="pagination-box">
+					<p class="pull-left" id="arrow-left"> < </p>
+					<div class='pagination-circle' id="page1"></div>
+					<div class='pagination-circle' id="page2"></div>
+					<div class='pagination-circle' id="page3"></div>
+					<div class='pagination-circle' id="page4"></div>
+					<div class='pagination-circle' id="page5"></div>
+					<p class="pull-left" id="arrow-right"> > </div>
+				</div> 
+			</div>
+		</div>
+	</div>
 </div>
+
+
+<script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
+
+<script>
+$('input#who').on('keyup', function(){
+	$('#card-who').text($(this).val());
+});
+
+$('input#what').on('keyup', function(){
+	$('#card-what').text($(this).val());
+});
+
+$('input#couse').on('keyup', function(){
+	$('#card-couse').text($(this).val());
+});
+
+$('input#who').on('keyup', function(){
+	$('#card-who').text($(this).val());
+});
+
+
+$(document).ready(function (){
+
+	$("<p class='subtitle-text'>Tell the world the person you will challange. It can be anyone you want, a musician, a celebrity, a friend, or maybe even a certain group of people.</p>").insertBefore("#who");
+
+	$("<p class='subtitle-text'>What is the challenging thing that person must do? It can be phisically, emotionally or maybe even psychologically challenging. Show us the evil genius in you.</p>").insertBefore("#what");
+
+	$("<p class='subtitle-text'>Which organization deserves the donation? It can be a ngo you like, or any charitable cause you believe in. Spread some love</p>").insertBefore("#couse");
+
+
+	$('input#who').attr('placeholder', 'The Pope, Will Ferrel, your friend...');
+	$('input#what').attr('placeholder', 'Shave his belly, reunite his band, win next match...');
+	$('input#couse').attr('placeholder', 'Greenpeace, Feminist Party, your Community Center...');
+
+	var error_message = $('.form-group:nth-child(9) .help-block').text();
+	if(error_message == "You need to pick 5 emojis!"){
+		$('#emojis-title').css("color", "#a94442")
+		$('#emojis-painel').css("border", "2px solid #a94442")
+	};
+
+
+	$('input#background_color').val("naked-orange");
+	$('input#emoji5').val("");
+	$('input#emoji4').val("");
+	$('input#emoji3').val("");
+	$('input#emoji2').val("");
+	$('input#emoji1').val("");
+
+
+	$('.form-group:nth-child(5)').attr('class','form-control hidden')
+	$('.form-group:nth-child(6)').attr('class','form-control hidden')
+	$('.form-group:nth-child(7)').attr('class','form-control hidden')
+	$('.form-group:nth-child(8)').attr('class','form-control hidden')
+	$('.form-group:nth-child(9)').attr('class','form-control hidden has-error')
+});
+
+var count = 0;
+$('#emojis-counter').text(count);
+
+
+$('.emojis').on('click', function(){
+	
+	var $clone = $(this).clone();
+	
+	if (count < 5) {
+		count = count + 1
+		$('#emojis-counter').text(count);
+
+		$('#selected-emojis').append($clone);
+	};	
+
+	$clone.on('click', function(event) {
+			if (count == 5) {
+				$('input#emoji5').val("");
+				$('.emoji5-preview').text("🆕");
+			};
+
+			if (count == 4) {
+				$('input#emoji4').val("");
+				$('.emoji4-preview').text("🆕");
+			};
+
+			if (count == 3) {
+				$('input#emoji3').val("");
+				$('.emoji3-preview').text("🆕");
+			};
+
+			if (count == 2) {
+				$('input#emoji2').val("");
+				$('.emoji2-preview').text("🆕");
+			};
+
+			if (count == 1) {
+				$('input#emoji1').val("");
+				$('.emoji1-preview').text("🆕");
+			};
+
+			count = count -1
+			$('#emojis-counter').text(count);
+			$(this).remove();
+
+	});
+
+	if (count == 1){
+		$('input#emoji1').val($clone.val());
+		$('.emoji1-preview').text($clone.val());
+
+	};
+
+	if (count == 2){
+		$('input#emoji2').val($clone.val());
+		$('.emoji2-preview').text($clone.val());
+	}
+
+	if (count == 3){
+		$('input#emoji3').val($clone.val());
+		$('.emoji3-preview').text($clone.val());
+	}
+
+	if (count == 4){
+		$('input#emoji4').val($clone.val());
+		$('.emoji4-preview').text($clone.val());
+	}
+
+	if (count == 5){
+		$('input#emoji5').val($clone.val());
+		$('.emoji5-preview').text($clone.val());
+	}
+	
+});
+
+
+var count_pagination = 1;
+$('#arrow-right').on('click', function(){
+	if (count_pagination < 5) {
+	count_pagination = count_pagination +1
+	};
+	if (count_pagination == 2){
+		$('#emojis-options-1').css("display", "none")
+		$('#page1').css("background", "#D8D8D8")
+		$('#emojis-options-2').css("display", "block")
+		$('#page2').css("background", "#848484")
+	};
+	if (count_pagination == 3){
+		$('#emojis-options-2').css("display", "none")
+		$('#page2').css("background", "#D8D8D8")
+		$('#emojis-options-3').css("display", "block")
+		$('#page3').css("background", "#848484")
+	};
+
+	if (count_pagination == 4){
+		$('#emojis-options-3').css("display", "none")
+		$('#page3').css("background", "#D8D8D8")
+		$('#emojis-options-4').css("display", "block")
+		$('#page4').css("background", "#848484")
+	};
+
+	if (count_pagination == 5){
+		$('#emojis-options-4').css("display", "none")
+		$('#page4').css("background", "#D8D8D8")
+		$('#emojis-options-5').css("display", "block")
+		$('#page5').css("background", "#848484")
+	};
+	return count_pagination;
+});
+
+$('#arrow-left').on('click', function(){
+	if (count_pagination > 1) {
+	count_pagination = count_pagination -1
+	};
+
+	if (count_pagination == 4){
+		$('#emojis-options-5').css("display", "none")
+		$('#page5').css("background", "#D8D8D8")
+		$('#emojis-options-4').css("display", "block")
+		$('#page4').css("background", "#848484")
+	};
+	if (count_pagination == 3){
+		$('#emojis-options-4').css("display", "none")
+		$('#page4').css("background", "#D8D8D8")
+		$('#emojis-options-3').css("display", "block")
+		$('#page3').css("background", "#848484")
+	};
+
+	if (count_pagination == 2){
+		$('#emojis-options-3').css("display", "none")
+		$('#page3').css("background", "#D8D8D8")
+		$('#emojis-options-2').css("display", "block")
+		$('#page2').css("background", "#848484")
+	};
+
+	if (count_pagination == 1){
+		$('#emojis-options-2').css("display", "none")
+		$('#page2').css("background", "#D8D8D8")
+		$('#emojis-options-1').css("display", "block")
+		$('#page1').css("background", "#848484")
+	};
+	return count_pagination;
+});
+
+	$('.option').on('click', function(){
+		var background_color = $(this).attr('id');
+		$("#dropdown-selected span").remove();
+		$(this).children().clone(true,true).appendTo("#dropdown-selected");
+		$('input#background_color').val(background_color)
+		$('#background').removeClass().addClass("card-background "+background_color);
+
+	});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#
+
+<div class="wrapper">
+	<div class="container">
+
+	
+	{% for message in get_flashed_messages() %}
+   			 <div class="alert alert-warning">
+        	<button type="button" class="close" data-dismiss="alert">&times;</button>
+        	{{ message }}
+         	</div>
+    {% endfor %}
+
+	<div class="page-header">
+		<h1>Create</h1>
+	</div>
+	<div class="col-md-4">
+		{{ wtf.quick_form(form) }}
+	</div>
+	
+	<div class="project-card card-position">
+			<p class="project-card-text">IF <span id="card-who" class="project-card-text"></span> <span id="card-what" class="project-card-text"> </span> <br/> WE WILL DONATE $ TO
+			  <span id="card-couse" class="project-card-text"></span></p>
+	</div>
+
+</div>
+
+
+<script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
+<script>
+$('input#who').on('keyup', function(){
+	$('#card-who').html($(this).val());
+});
+
+$('input#what').on('keyup', function(){
+	$('#card-what').html($(this).val());
+});
+
+$('input#couse').on('keyup', function(){
+	$('#card-couse').html($(this).val());
+});
+
+
+
+</script>
+
+#}
+
 {% endblock %}

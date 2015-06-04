@@ -24,7 +24,7 @@ def oauth_callback(provider):
     if not current_user.is_anonymous():
         return redirect(url_for('index'))
     oauth = OAuthSignIn.get_provider(provider)
-    social_id, username, email = oauth.callback()
+    social_id, username, email, facebook_id = oauth.callback()
     if social_id is None:
         flash('Authentication failed.')
         return redirect(url_for('index'))
@@ -33,6 +33,7 @@ def oauth_callback(provider):
         session['social_id'] = social_id
         session['name'] = username
         session['email'] = email
+        session['facebook_id'] = facebook_id
         return redirect(url_for('auth.facebook_register'))
     login_user(user, True)
     return redirect(url_for('main.index'))
@@ -58,13 +59,14 @@ def unconfirmed():
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    url_register = url_for('auth.register')
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user, form.remember_me.data)
             return redirect(request.args.get('next') or url_for('main.index'))
         flash('Invalid username or password.')
-    return render_template('auth/login.html', form=form)
+    return render_template('auth/login.html', form=form, url_register=url_register)
 
 
 @auth.route('/logout')
@@ -97,17 +99,19 @@ def facebook_register():
     name = session.get('name')
     social_id = session.get('social_id')
     email = session.get('email')
+    facebook_id = session.get('facebook_id')
     if form.validate_on_submit():
         user = User(email=email,
                     username=form.username.data,
                     social_id=social_id,
+                    facebook_id=facebook_id,
                     name=name,
                     confirmed=True)
         db.session.add(user)
         db.session.commit()
         login_user(user, True)
         return redirect(url_for('main.index'))
-    return render_template('auth/register.html', form=form)
+    return render_template('auth/facebook_register.html', form=form)
 
 
 @auth.route('/confirm/<token>')

@@ -47,6 +47,15 @@ class Role(db.Model):
     def __repr__(self):
         return '<Role %r>' % self.name
 
+class Report(db.Model):
+    __tablename__ = 'reports'
+    project_id = db.Column(db.Integer, db.ForeignKey('projects.id'),
+                            primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),
+                            primary_key=True)
+    pledged_amount = db.Column(db.BigInteger, default=0)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -56,6 +65,7 @@ class User(UserMixin, db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     password_hash = db.Column(db.String(128))
     social_id = db.Column(db.String(64))
+    facebook_id = db.Column(db.BigInteger, default=0)
     confirmed = db.Column(db.Boolean, default=False)
     name = db.Column(db.String(64))
     location = db.Column(db.String(64))
@@ -64,6 +74,7 @@ class User(UserMixin, db.Model):
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar_hash = db.Column(db.String(32))
     projects = db.relationship('Project', backref='author', lazy='dynamic')
+
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
@@ -191,20 +202,37 @@ class Project(db.Model):
     who = db.Column(db.String(64))
     what = db.Column(db.String(128))
     couse = db.Column(db.String(64))
-    organization_name = db.Column(db.String(64))
+    challenged_twitter = db.Column(db.String(64))
+    emoji1 = db.Column(db.String(64))
+    emoji2 = db.Column(db.String(64))
+    emoji3 = db.Column(db.String(64))
+    emoji4 = db.Column(db.String(64))
+    emoji5 = db.Column(db.String(64))
+    background_color = db.Column(db.String(64))
     organization_url = db.Column(db.String(64))
     about = db.Column(db.Text)
     pledged_amount = db.Column(db.BigInteger, default=0)
+    viewers_counter = db.Column(db.BigInteger, default=0)
     timestamp = db.Column(db.Date, index=True, default=datetime.utcnow)
     end_first_round = db.Column(db.Date, index=True, default=datetime.utcnow() + timedelta(45))
     end_second_round = db.Column(db.Date, index=True, default=datetime.utcnow() + timedelta(90))
+    category = db.Column(db.Integer, default=1)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     approved = db.Column(db.Boolean, default=False)
 
+    
     def days_to_go(self):
         days_to_go = self.end_first_round - datetime.utcnow()
         return days_to_go
 
+
+    def sum_total_ammount(self, value):
+        self.pledged_amount = self.pledged_amount + value
+        db.session.add(self)
+
+    def sum_viewers_counter(self):
+        self.viewers_counter = self.viewers_counter + 1
+        db.session.add(self)
 
 
 

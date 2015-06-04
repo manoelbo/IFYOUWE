@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}{{project.emoji1}}{{project.emoji2}}{{project.emoji3}}{{project.emoji4}}{{project.emoji5}}{% endblock %}
+
+
+
+{% block page_content %}
+
+
+
+
+<div class="card-background {{project.background_color}}">
+        <div class="emoji-background">
+            <div class="emoji-line">{{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     
+            </div>
+           
+            <div class="emoji-line push-left">{{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}    {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}    {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}            
+            </div>
+            
+            <div class="emoji-line">{{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}    {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     {{project.emoji1}}     {{project.emoji2}}     {{project.emoji3}}     
+            </div>
+           
+            <div class="emoji-line push-left">{{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}    {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}    {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}     {{project.emoji4}}     {{project.emoji5}}     {{project.emoji1}}            
+            </div>
+            
+        </div>
+
+            <div class="project-card center-block card-position">
+                <p class="project-card-text">If {{ project.who }} {{ project.what }} we will donate {{ project.pledged_amount}}$ to {{ project.couse }}</p>
+                <p class="project-card-time">13 days to go</p>
+            </div>
+
+    
+</div>
+
+
+
+<div class="container">
+
+
+    <div class="row" id="amount-form" >
+        <div class='col-md-12 donation-label center-block'>
+                <span class="pull-left">I want to donate</span>
+                <input type="number" id="amount-input" size="8" class="pull-left" value="15"/><button type="button" class="dropdown-toggle pull-left" id="select-value" data-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu amount-options" role="menu">
+                    <li class="amount-option" id="15"> $15 </li>
+                    <li class="amount-option" id="30"> $30 </li>
+                    <li class="amount-option" id="45"> $45 </li>
+                    <li class="amount-option" id="60"> $60 </li>
+                </ul>
+                <span class="pull-left">to make this happen</span>
+        </div>
+
+        <div class='col-md-8'>
+            {{ wtf.quick_form(form2) }}
+        </div>
+        
+        <div class='col-md-4 right-text'>
+            <p class='vcenter'>Rules & How it works</p>
+        </div>
+    </div> 
+    
+    <div class='row'>
+
+    </div> 
+    </form>
+
+    <div class="row">
+        <div class='col-md-12 breaker'>
+        </div>
+    </div>
+
+    <div class="row" id="project-info">
+
+        <div class='col-md-7' id="why-info">
+            
+            <h2 class="big-text">Why this challenge?</h2>
+            <p class="normal-text">{{ project.about }}
+
+            <h2 class="big-text">Who gets the money?</h2> 
+            <div class="small-profile-picture pull-left">
+                <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+            </div>
+            <h3 class="who-text pull-left"> Barnacancerfonden</h3>
+
+        </div> 
+
+
+        <div class="col-md-1">
+            <div id="vertigal-braker-3"> </div>
+        </div> 
+
+        <div class='col-md-4' id="counter-info">
+
+            <h2 class="big-text">245 donors.</h2>
+            <p class="normal-text">245 people donated to put pressure and make this happen.</p>
+
+            <h2 class="big-text">{{ project.viewers_counter }} views</h2>
+            <p class="normal-text">This bribe has been viewed by {{ project.viewers_counter }} people to this date.</p>
+
+            <h2 class="big-text">23 days left.</h2>
+            <p class="normal-text">The collection period will end on June 25th of 2015.</p>
+
+            <button class="btn btn_round blue">Share this project</button>
+
+        </div>
+
+    </div>
+
+    <div class="row" id="supported_by">
+       
+        <div class="col-md-12">
+            <h3 class="medium-bold">Created | Supported by</h3>
+        
+
+        <div class="small-profile-picture pull-left" id="created_by_img">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+        </div>
+
+        <div class="small-profile-picture pull-left" id="supported_by_img">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+            <img class="img-rounded profile-thumbnail" src="../static/img/profile-img-exemple.png">
+        </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
+
+<script>
+
+$('#amount-input').on('keyup', function(){
+    $('#amount_hidden').val($(this).val());
+});
+
+
+$('#amount_hidden').val($('#amount_hidden').val());
+
+$('.amount-option').on('click', function(){
+        var ammount_value = $(this).attr('id');
+        $("#amount-input").val('');
+        $('#amount-input').val(ammount_value)
+        $('#amount_hidden').val(ammount_value)
+
+    });
+
+$(document).ready(function (){
+    $("#submit_amount").attr('class','btn btn_round blue pull-right')
+    $('#amount_hidden').val(15);
+    $('#amount-input').val(15);
+    $('.form-group').attr('class','.form-control hidden')
+});
+
+</script>
+
+{# 
+
+
+
+
+        <div class='col-md-4'>
+            <h2 class="medium-text">The money goes to:</h2>
+            <div class="profile-img"></div>
+            <h3 class="who-text"><a href="">Barnacancerfonden</a></h3>
+
+            <h2 class="medium-text">Challenge created by:</h2>
+            <div class="profile-img"></div>
+            <h3 class="who-text"><a href="">Mané Brasil</a></h3>
+        </div>
+
+#}
+
+
+
+{# 
+
+    {% for project in projects %}
+    {% if current_user.is_administrator() %}
+        <div class="project-card">
+            <p class="project-text">IF {{ project.who }} {{ project.what }} WE WILL DONATE {{ project.pledged_amount}}$ TO {{ project.couse }}</p>
+             <div class="project-author"><a href="{{ url_for('.user', username=project.author.username) }}">{{ project.author.username }}</a></div>
+        </div>
+        <div>
+        	<div class="col-md-4">
+   			 {{ wtf.quick_form(form) }}
+			</div>
+        </div>
+
+
+        {% endif %}
+    {% if project.approved == True %}
+        <div class="project-card">
+            <p class="project-text">IF {{ project.who }} {{ project.what }} WE WILL DONATE {{ project.pledged_amount}}$ TO {{ project.couse }}</p>
+             <div class="project-author"><a href="{{ url_for('.user', username=project.author.username) }}">{{ project.author.username }}</a></div>
+        </div>
+        <div>
+            <a href="{{ url_for('.amount', id=project.id) }}"<p>DONATE</p>
+        </div>
+        {% endif %}
+    {% endfor %}
+#}
+{% endblock %}
+
+
